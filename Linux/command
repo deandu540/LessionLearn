@@ -1,0 +1,26 @@
+
+IP 
+
+## Configure eth0
+#
+# vi /etc/sysconfig/network-scripts/ifcfg-eth0
+
+
+## Configure Default Gateway
+#
+# vi /etc/sysconfig/network
+
+NETWORKING=yes
+HOSTNAME=deandu
+GATEWAY=192.168.1.1
+
+## Restart Network Interface
+
+/etc/init.d/network restart
+
+## Configure DNS Server
+#
+# vi /etc/resolv.conf
+
+nameserver 8.8.8.8      # Replace with your nameserver ip
+nameserver 192.168.1.1  # Replace with your nameserver ip
