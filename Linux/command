@@ -26,3 +26,9 @@ nameserver 192.168.1.1  # Replace with your nameserver ip
 
 /etc/init.d/network restart
 
+==========  查看硬碟空間方法  ==========
+
+du -sh *
+du -sh * | sort -rn | head -5
+
+
