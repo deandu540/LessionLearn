@@ -47,6 +47,10 @@ PasswordAuthentication no
 vi /etc/selinux/config
 SELINUX=disabled
 
+* 免密碼登入
+
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+ssh-copy-id slave
 
 
 
