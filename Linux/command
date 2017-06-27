@@ -31,4 +31,25 @@ nameserver 192.168.1.1  # Replace with your nameserver ip
 du -sh *
 du -sh * | sort -rn | head -5
 
+========== ssh =======================
+
+* remove comment
+
+vi /etc/ssh/sshd_config
+
+# To disable tunneled clear text passwords, change to no here!
+PasswordAuthentication yes
+#PermitEmptyPasswords no
+PasswordAuthentication no
+
+* disable selinux
+
+vi /etc/selinux/config
+SELINUX=disabled
+
+
+
+
+
+
 
