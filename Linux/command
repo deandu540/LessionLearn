@@ -52,6 +52,23 @@ SELINUX=disabled
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 ssh-copy-id slave
 
+====================  zip =====================
+
+* 安裝
+
+yum install zip unzip
+
+* 壓縮 解壓縮
+
+zip -r {zip file name} {target folder}
+ex: zip -r test test/*
+
+unzip file.zip
+
+
+
+
+
 
 
 
