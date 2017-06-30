@@ -1,0 +1,33 @@
+
+================  Chrome  =====================
+
+* install 1
+
+cat > /etc/yum.repos.d/google-chrome.repo << EOF
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+EOF
+
+yum info google-chrome-stable
+
+yum -y install google-chrome-stable
+
+* install 2
+
+wget http://chrome.richardlloyd.org.uk/install_chrome.sh
+chmod u+x install_chrome.sh
+./install_chrome.sh
+
+* execute
+
+google-chrome &
+
+=================================================
+
+
+
+
