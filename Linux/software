@@ -26,8 +26,21 @@ chmod u+x install_chrome.sh
 
 google-chrome &
 
-=================================================
+================ Vnc server ====================
 
+* Install VncServer
 
+yum groupinstall "GNOME Desktop"
+yum install tigervnc-server
+
+================ NPM ============================
+
+* Npm install
+
+yum install -y gcc-c++ make
+curl -sL https://rpm.nodesource.com/setup_7.x | sudo -E bash -
+yum install nodejs
+ 
+npm install -g n
 
 
