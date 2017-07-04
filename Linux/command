@@ -74,8 +74,9 @@ localectl list-locales | grep en_
 localectl set-locale LANG=en_US.utf8
 
 
+===================  hostname 修改 ===============================
 
-
+vi /etc/hostname
 
 
 
