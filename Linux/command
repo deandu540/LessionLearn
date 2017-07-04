@@ -65,7 +65,13 @@ ex: zip -r test test/*
 
 unzip file.zip
 
+====================  Linux host 語系設定  =====================
 
+* localectl
+
+localectl status
+localectl list-locales | grep en_
+localectl set-locale LANG=en_US.utf8
 
 
 
