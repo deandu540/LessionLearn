@@ -77,6 +77,32 @@ localectl set-locale LANG=en_US.utf8
 ===================  hostname 修改 ===============================
 
 vi /etc/hostname
+reboot
+
+
+===================  設定時區  =============================
+
+* 設定時區
+
+timedatectl set-timezone Asia/Taipei ## set timezone
+
+* NTP定時
+
+yum -y install ntp
+ntpdate pool.ntp.org
+systemctl start ntpd
+systemctl enable ntpd
+
+
+
+
+
+
+
+
+
+
+
 
 
 
