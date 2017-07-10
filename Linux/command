@@ -93,7 +93,14 @@ ntpdate pool.ntp.org
 systemctl start ntpd
 systemctl enable ntpd
 
+=================  selinux  ====================
 
+sed 's@SELINUX=enforcing@SELINUX=disabled@g'  /etc/selinux/config
+
+or 
+
+getenforce
+setenforce 0
 
 
 
