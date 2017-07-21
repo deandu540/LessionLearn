@@ -110,6 +110,10 @@ setenforce 0
 
 jobs -l
 
+=================  不中斷執行程式 ===========
+
+nohup command &> log &
+
 
 
 
