@@ -102,6 +102,13 @@ or
 getenforce
 setenforce 0
 
+=================  背景執行程式  ===========
+
+./metricbeat -e > metricbeat.log 2>&1 &
+
+* 查看方式
+
+jobs -l
 
 
 
