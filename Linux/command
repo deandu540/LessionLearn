@@ -113,7 +113,7 @@ jobs -l
 =================  不中斷執行程式 ===========
 
 nohup command &> log &
-
+nohup ./metricbeat -e > metricbeat.log 2>&1 &
 
 
 
