@@ -32,3 +32,8 @@ git merge --no-ff release/v0.7.0
 
 git branch -d release/v0.7.0
 
+========  Git =========
+
+* delete remote branch
+git push origin --delete <branch_name>
+
