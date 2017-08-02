@@ -117,8 +117,10 @@ nohup ./metricbeat -e > metricbeat.log 2>&1 &
 
 
 
+================ ln 軟硬連結 ===========
 
-
+ln sourceFilepath targetFilePath
+ln -s sourceFolderpath targetFolderPath
 
 
 
