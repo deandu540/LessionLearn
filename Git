@@ -20,7 +20,7 @@ git push origin master
 
 git tag -n
 git tag -a v0.7.0 -m "xxxxxxxxx"
-git tag push origin v0.7.0
+git push origin v0.7.0
 
 
 
