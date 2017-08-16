@@ -1,0 +1,8 @@
+
+=========   replace string ==========
+:%s/a/b/g
+
+:s/a/b/g
+
+:%s/a/b/gc
+
