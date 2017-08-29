@@ -1,0 +1,110 @@
+=============================
+
+* apache httpd mod_jk + tomcat cluster
+
+h1. 1. 編譯 mod_jk
+
+1. 安裝必要工具
+yum install -y httpd httpd-devel
+yum install -y gcc*
+
+2. 下載tomcat-connector: Tomcat Connectors JK 1.2
+http://tomcat.apache.org/download-connectors.cgi
+
+3. 移動到欲編譯的目錄
+cd tomcat-connectors-1.2.42-src/native
+
+4. 搜尋apxs所在路徑
+find / -name apxs
+
+5. 編譯
+./configure --with-apxs=apxs的路徑
+make
+
+6. find mod_jk.so
+in tomcat-connectors-1.2.42-src/native/apache-2.0 > find mod_jk.so
+
+h2. 2. Apache Httpd setting
+
+1. vi /etc/httpd/conf/httpd.conf
+
+add below : 
+```
+LoadModule jk_module /etc/httpd/modules/mod_jk.so
+JkWorkersFile /etc/httpd/conf/workers.properties
+JkMount /* lbcontroller
+Include conf.modules.d/*.conf
+
+```
+
+2. vi /etc/httpd/conf/workers.properties
+
+add below
+```
+worker.list=lbcontroller
+
+worker.tomcat1.host=tomcatserver1 ( or ip )
+worker.tomcat1.port=8009
+worker.tomcat1.type=ajp13
+worker.tomcat1.lbfactor=1
+
+worker.tomcat2.host=tomcatserver2 (or ip )
+worker.tomcat2.port=8009
+worker.tomcat2.type=ajp13
+worker.tomcat2.lbfactor=1
+
+worker.lbcontroller.type=lb
+worker.lbcontroller.balance_workers=tomcat1,tomcat2
+
+worker.lbcontroller.sticky_session=1
+
+```
+
+h1. 3. tomcat setting
+
+*On tomcatserver1*
+
+1. vi tomcat/conf/server.xml
+
+replace 
+```
+<Engine name="Catalina" defaultHost="localhost"> 
+```
+to 
+```
+<Engine name="Catalina" defaultHost="localhost" jvmRoute="tomcat1">
+```
+
+2. vi tomcat/conf/web.xml
+add below
+
+```
+<distributable />
+```
+
+
+*On tomcatserver2*
+
+1. vi tomcat/conf/server.xml
+
+replace 
+```
+<Engine name="Catalina" defaultHost="localhost"> 
+```
+to 
+```
+<Engine name="Catalina" defaultHost="localhost" jvmRoute="tomcat2">
+```
+
+2. vi tomcat/conf/web.xml
+add below
+
+```
+<distributable />
+```
+
+
+
+
+
+
