@@ -30,8 +30,8 @@ google-chrome &
 
 * Install VncServer
 
-yum groupinstall "GNOME Desktop"
-yum install tigervnc-server
+yum groupinstall "GNOME Desktop" -y
+yum install tigervnc-server -y
 
 ================ NPM, Nodejs ============================
 
