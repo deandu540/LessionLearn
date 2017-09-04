@@ -16,6 +16,9 @@ yum info google-chrome-stable
 
 yum -y install google-chrome-stable
 
+* beta 版本
+yum install google-chrome-beta
+
 * install 2
 
 wget http://chrome.richardlloyd.org.uk/install_chrome.sh
