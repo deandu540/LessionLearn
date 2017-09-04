@@ -1,0 +1,44 @@
+======================================================================
+/*
+* 建立自己的伺服器憑證來達到網站 SSL 加密設定, 搭配HAProxy 設定網站
+*/
+1. Install openssl
+
+2. Create ca
+
+```
+mkdir -p /etc/pki/CA
+cd /etc/pki/CA
+mkdir certs crl newcerts private
+chmod 700 private
+touch index.txt
+echo 1000 > serial
+echo 1000 > crlnumber
+openssl genrsa -out ./private/ca.key 4096
+openssl req -new -x509 -days 365 -key ./private/ca.key -out ./certs/ca.crt
+
+```
+
+3. Create server key
+
+
+```
+openssl genrsa -out ./private/server.key 2048
+openssl req -new -key ./private/server.key -out ./certs/server.csr
+openssl x509 -req -days 365 -in ./certs/server.csr -CA ./certs/ca.crt -CAkey ./private/ca.key -set_serial 01 -out ./certs/server.crt
+```
+
+4. Create PEM file
+
+```
+cat ./certs/server.crt > ./certs/server.pem
+cat ./private/server.key >> ./certs/server.pem
+```
+
+5. Connect to http server
+
+```
+openssl s_client -connect 127.0.0.1:443
+```
+
+
