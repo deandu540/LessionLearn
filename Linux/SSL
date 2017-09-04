@@ -42,3 +42,6 @@ openssl s_client -connect 127.0.0.1:443
 ```
 
 
+參考這兩篇設定
+https://blog.toright.com/posts/4024/haproxy-%E6%95%B4%E5%90%88-ssltls-client-certificate-%E6%95%99%E5%AD%B8.html
+https://blog.toright.com/posts/4345/%E9%80%8F%E9%81%8E-certificate-revocation-list-haproxy-%E4%BE%86%E7%AE%A1%E7%90%86-https-%E9%80%A3%E7%B7%9A.html
