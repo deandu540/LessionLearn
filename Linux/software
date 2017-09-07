@@ -48,6 +48,54 @@ npm install -g n
 
 ================ haproxy ============================
 
+================ NFS (share folder) =============================
+server: 192.168.1.50
+client: 192.168.1.51
+
+server : 
+
+yum -y install nfs-utils
+
+mkdir /nfsshare
+chmod -R 777 /nfsshare/
+
+vi /etc/exports
+/nfsshare 192.168.1.51(rw,sync,no_root_squash,no_all_squash)
+
+service start
+
+systemctl enable rpcbind
+systemctl enable nfs-server
+systemctl enable nfs-lock
+systemctl enable nfs-idmap
+systemctl start rpcbind
+systemctl start nfs-server
+systemctl start nfs-lock
+systemctl start nfs-idmap
+firewall-cmd –permanent –zone=public –add-service=nfs
+firewall-cmd –reload
+
+
+
+client : 
+
+yum -y install nfs-utils
+
+mkdir -p /mnt/nfsshare
+mount -t nfs 192.168.1.50:/nfsshare /mnt/nfsshare/
+
+auto mount when reboot:
+
+vi /etc/fstab
+192.168.1.50:/nfsshare /mnt/nfsshare nfs defaults 0 0
+
+
+
+
+
+
+
+
 
 
 
