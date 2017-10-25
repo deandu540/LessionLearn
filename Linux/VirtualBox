@@ -24,7 +24,19 @@ VBoxManage snapshot         <uuid|vmname>
                                  [--description <desc>] |
                             list [--details|--machinereadable]
                             showvminfo <uuid|snapname>
-                            
+
+* Clonevm
+VBoxManage clonevm          <uuid|vmname>
+                            [--snapshot <uuid>|<name>]
+                            [--mode machine|machineandchildren|all]
+                            [--options link|keepallmacs|keepnatmacs|
+                                       keepdisknames]
+                            [--name <name>]
+                            [--groups <group>, ...]
+                            [--basefolder <basefolder>]
+                            [--uuid <uuid>]
+                            [--register]
+
                             
 
 
