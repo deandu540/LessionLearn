@@ -1,0 +1,37 @@
+
+* list
+
+VBoxManage list vms
+VBoxManage list runningvms
+
+* show info
+VBoxManage showvminfo <uuid|vmname>
+
+* register vm
+VBoxManage registervm <filename>
+
+* unregister vm
+VBoxManage unregistervm     <uuid|vmname> [--delete]
+
+* Snapshot
+VBoxManage snapshot         <uuid|vmname>
+                            take <name> [--description <desc>] [--live] |
+                            delete <uuid|snapname> |
+                            restore <uuid|snapname> |
+                            restorecurrent |
+                            edit <uuid|snapname>|--current
+                                 [--name <name>]
+                                 [--description <desc>] |
+                            list [--details|--machinereadable]
+                            showvminfo <uuid|snapname>
+                            
+                            
+
+
+
+
+
+
+
+
+
