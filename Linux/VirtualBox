@@ -1,6 +1,5 @@
 
 * list
-
 VBoxManage list vms
 VBoxManage list runningvms
 
@@ -37,7 +36,13 @@ VBoxManage clonevm          <uuid|vmname>
                             [--uuid <uuid>]
                             [--register]
 
-                            
+* startvm
+VBoxManage startvm          <uuid|vmname>...
+                            [--type gui|sdl|headless]
+
+* shutdown/poweroff
+VBoxManage controlvm        <uuid|vmname>
+                            pause|resume|reset|poweroff|savestate|
 
 
 
