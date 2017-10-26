@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+filename="./a.txt"
+echo $filename
+
+#檢查檔案是否存在
+#if [ -d "/path/to/dir" ]; then
+    # 目錄 /path/to/dir 存在
+    # echo "Directory /path/to/dir exists."
+#else
+    # 目錄 /path/to/dir 不存在
+    # echo "Directory /path/to/dir does not exists."
+#fi
+
+if [ -f $filename ]; then
+    # 檔案 /path/to/dir/filename 存在
+    echo "Update " $filename 
+    rm -rf $filename
+else
+    # 檔案 /path/to/dir/filename 不存在
+    echo "File " $filename " does not exists."
+fi
+
+echo "**** Get all vms to file ****"
+
+VBoxManage list vms > $filename
+
+echo "**** Get vm and snapshot ****"
+
+exec < $filename
+
+while read line
+do
+  echo $ line
+  echo 'a' $line
+  nnn=( $line )
+  #echo "s1 : '${nnn[0]}'"
+  #echo "s2 : '${nnn[1]}'"
+  #echo "sn : '${#nnn[@]}'"
+
+  VBoxManage snapshot ${nnn[1]} list
+
+
+
+done
