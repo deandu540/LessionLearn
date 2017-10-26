@@ -13,6 +13,7 @@ VBoxManage registervm <filename>
 VBoxManage unregistervm     <uuid|vmname> [--delete]
 
 * Snapshot
+* 可以在 online/offline 執行
 VBoxManage snapshot         <uuid|vmname>
                             take <name> [--description <desc>] [--live] |
                             delete <uuid|snapname> |
@@ -25,6 +26,7 @@ VBoxManage snapshot         <uuid|vmname>
                             showvminfo <uuid|snapname>
 
 * Clonevm
+* 只能在 offline 執行
 VBoxManage clonevm          <uuid|vmname>
                             [--snapshot <uuid>|<name>]
                             [--mode machine|machineandchildren|all]
