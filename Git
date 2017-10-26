@@ -38,3 +38,9 @@ git branch -d release/v0.7.0
 * delete remote branch
 git push origin --delete <branch_name>
 
+
+* restore to latest commit
+git reset --hard
+
+
+
