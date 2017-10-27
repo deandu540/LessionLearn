@@ -33,21 +33,28 @@ exec < $filename1
 while read line
 do
   echo $line
-  nnn=( $line )
+  IFS=$' ' nnn=( $line )
   #echo "s1 : '${nnn[0]}'"
   #echo "s2 : '${nnn[1]}'"
   #echo "sn : '${#nnn[@]}'"
 
   VBoxManage snapshot ${nnn[1]} list > $filename2
 
-  while read line2
+ while read line2
   do
-    IFS=$' ' DIRS=(${line2})
+    IFS=$'='
+    DIRS=(${line2})
     for (( i=0 ; i<${#DIRS[@]} ; i++ ));
     do
         echo "$i: [${DIRS[i]}]"
     done
+    if [ ${DIRS[0]} = "SnapshotName" ]
+    then
+      echo "VBoxManage snapshot ${nnn[1]} delete ${DIRS[1]}"
+      #VBoxManage snapshot ${nnn[1]} delete ${DIRS[1]}
+    fi
   done < $filename2
+
 
 
 done
