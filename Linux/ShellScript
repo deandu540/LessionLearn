@@ -51,7 +51,10 @@ do
     if [ ${DIRS[0]} = "SnapshotName" ]
     then
       echo "VBoxManage snapshot ${nnn[1]} delete ${DIRS[1]}"
-      #VBoxManage snapshot ${nnn[1]} delete ${DIRS[1]}
+      echo "VBoxManage snapshot ${nnn[1]} delete `echo ${DIRS[1]} | awk '{print substr($0, 2, length($0)-2)}'`"
+      echo ${DIRS[1]} | awk '{print substr($0, 2, length($0)-2)}'
+
+      VBoxManage snapshot ${nnn[1]} delete `echo ${DIRS[1]} | awk '{print substr($0, 2, length($0)-2)}'`
     fi
   done < $filename2
 
