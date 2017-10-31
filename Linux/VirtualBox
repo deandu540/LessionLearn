@@ -47,8 +47,8 @@ VBoxManage controlvm        <uuid|vmname>
                             pause|resume|reset|poweroff|savestate|
 
 
-
-
+* modify vm name
+VBoxManage modifyvm ORIGNAL_NAME --name NEW_NAME
 
 
 
