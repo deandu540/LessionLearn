@@ -5,7 +5,7 @@
 
 1. 從 develop 建立 branch release/{version_name}
 
-git branch develop
+git checkout develop
 git checkout -b release/v0.7.0 develop
 
 2. modify config file
