@@ -1,0 +1,5 @@
+# export database/table
+mysqldump -u... -p... mydb t1 t2 t3 > mydb_tables.sql
+
+#import data to database
+mysql -u username -p -D dbname < tableName.sql
