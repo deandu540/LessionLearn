@@ -41,6 +41,7 @@ git push origin --delete <branch_name>
 
 * restore to latest commit
 git reset --hard
-
+ex: git reset --hard commit_sha
+ex: git reset --hard HEAD~1
 
 
