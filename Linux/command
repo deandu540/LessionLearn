@@ -127,5 +127,19 @@ ln -s sourceFolderpath targetFolderPath
 
 mkhomedir_helper username
 
+================ user list ===========
+cat /etc/passwd
+
+* modify usermod
+usermod -s /sbin/nologin <username>
+usermod -s /bin/bash <username>
+
+
+================ assign user to execute process =======
+sudo -H -u otheruser bash -c 'echo "I am $USER, with uid $UID"'
+
+
+
+
 
 
