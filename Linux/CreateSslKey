@@ -1,0 +1,41 @@
+連線到 SMTP server, Local端必須要設定 ssl key
+
+mkdir -p /etc/pki/CA/
+mkdir -p /etc/pki/CA/certs/
+mkdir -p /etc/pki/CA/private/
+openssl genrsa -out /etc/pki/CA/private/ca.key 2048
+openssl req -new -key /etc/pki/CA/private/ca.key -out /etc/pki/CA/certs/ssl.csr
+openssl x509 -req -days 3650 -in /etc/pki/CA/certs/ssl.csr -signkey /etc/pki/CA/private/ca.key -out /etc/pki/CA/certs/ssl.crt
+
+
+
+
+in /opt/java/jre/lib/security
+echo | openssl s_client -connect 210.59.228.45:587 2>&1 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > yourcert.pem
+keytool -keystore cacerts -importcert -alias youralias -file yourcert.pem
+
+
+
+keytool -storepasswd -keystore /path/to/keystore
+Enter keystore password:  changeit
+New keystore password:  new-password
+Re-enter new keystore password:  new-password
+
+
+Changing keystore password
+
+$ keytool -storepasswd -keystore keystorename
+Enter keystore password:  <old password>
+New keystore password: <new password>
+Re-enter new keystore password: <new password>
+
+Changing keystore alias password
+
+$keytool -keypasswd -keystore keystorename -alias aliasname
+Enter keystore password:  
+New key password for <aliasname>: 
+Re-enter new key password for <aliasname>:
+
+
+keytool -list -keystore cacerts | grep youralias
+keytool -delete -alias youralias -keystore cacerts
