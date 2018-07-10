@@ -10,3 +10,14 @@ iptables -t nat -A POSTROUTING -j MASQUERADE
 
 iptables -t nat -A PREROUTING -p tcp --dport 10280 -j DNAT --to 192.168.57:80
 iptables -t nat -A POSTROUTING -j MASQUERADE
+
+
+
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -F
+iptables -t mangle -F
+iptables -F
+iptables -X
+
