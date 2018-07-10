@@ -1,0 +1,12 @@
+
+iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 80 -j DNAT --to 208.68.208.81:80
+
+
+iptables -t nat -A PREROUTING -p tcp --dport 10280 -j DNAT --to 192.168.57.95:8080
+iptables -t nat -A PREROUTING -p tcp --dport 10283 -j DNAT --to 192.168.57:5050
+iptables -t nat -A PREROUTING -p tcp --dport 10282 -j DNAT --to 192.168.57:1234
+iptables -t nat -A POSTROUTING -j MASQUERADE
+
+
+iptables -t nat -A PREROUTING -p tcp --dport 10280 -j DNAT --to 192.168.57:80
+iptables -t nat -A POSTROUTING -j MASQUERADE
