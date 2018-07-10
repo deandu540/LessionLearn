@@ -93,6 +93,24 @@ ntpdate pool.ntp.org
 systemctl start ntpd
 systemctl enable ntpd
 
+
+yum -y install ntp ntpdate                 
+
+systemctl enable rpcbind
+systemctl enable nfs-server
+systemctl enable nfs-lock
+systemctl enable nfs-idmap
+systemctl start rpcbind
+systemctl start nfs-server
+systemctl start nfs-lock
+systemctl start nfs-idmap
+
+* Another sync
+chrony -- centos 7 uses it
+
+
+
+
 =================  selinux  ====================
 
 sed 's@SELINUX=enforcing@SELINUX=disabled@g'  /etc/selinux/config
@@ -139,7 +157,30 @@ usermod -s /bin/bash <username>
 sudo -H -u otheruser bash -c 'echo "I am $USER, with uid $UID"'
 
 
+================ modify file limits ============
+vi /etc/security/limits.conf
+
+- Modify file
+
+* soft nofile 65536
+* hard nofile 131072
+* soft nproc 4096
+* hard nproc 4096
 
 
+=============== modify execute process number =========
+vi /etc/security/limits.d/90-nproc.conf
+
+- Modify file
+
+* soft nproc 2048
+
+vi /etc/sysctl.conf 
+
+- Modify file
+
+vm.max_map_count=655360
+
+sysctl -p
 
 
